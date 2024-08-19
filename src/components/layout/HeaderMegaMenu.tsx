@@ -24,6 +24,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown } from "@tabler/icons-react";
 import classes from "./HeaderMegaMenu.module.css";
 import { serviceList } from "@/data/list";
+import Link from "next/link";
 
 export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
@@ -57,11 +58,13 @@ export function HeaderMegaMenu() {
       <header className={classes.header}>
         <Group justify="space-between" h="100%">
           {/* Todo : brand && logo */}
-          <p>Everyday cost</p>
+          <Link href={"/"} className={classes.home}>
+            Everyday cost
+          </Link>
           <Group h="100%" gap={0} visibleFrom="sm">
-            <a href="#" className={classes.link}>
+            <Link href={"/"} className={classes.link}>
               Home
-            </a>
+            </Link>
             <HoverCard
               width={600}
               position="bottom"
@@ -70,7 +73,7 @@ export function HeaderMegaMenu() {
               withinPortal
             >
               <HoverCard.Target>
-                <a href="#" className={classes.link}>
+                <Link href={"/"} className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
                       Services
@@ -80,7 +83,7 @@ export function HeaderMegaMenu() {
                       color={theme.colors.blue[6]}
                     />
                   </Center>
-                </a>
+                </Link>
               </HoverCard.Target>
 
               <HoverCard.Dropdown style={{ overflow: "hidden" }}>
@@ -106,23 +109,27 @@ export function HeaderMegaMenu() {
                         {/* "Unleash your wildest feature requests here!" */}
                       </Text>
                     </div>
-                    <Button variant="default">
-                      요청하러 가기
-                      {/* Make a request */}
-                    </Button>
+
+                    <Link href={"/contact"}>
+                      <Button variant="default">
+                        요청 하기
+                        {/* Make a request */}
+                      </Button>
+                    </Link>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="#" className={classes.link}>
+            <Link href={"/statistics"} className={classes.link}>
               Statistics
-            </a>
-            <a href="#" className={classes.link}>
+            </Link>
+            <Link href={"/news"} className={classes.link}>
               News & Updates
-            </a>
-            <a href="#" className={classes.link}>
+            </Link>
+
+            <Link href={"/contact"} className={classes.link}>
               Contact
-            </a>
+            </Link>
           </Group>
 
           <Group visibleFrom="sm">
@@ -150,9 +157,9 @@ export function HeaderMegaMenu() {
         <ScrollArea h={`calc(100vh - ${rem(80)})`} mx="-md">
           <Divider my="sm" />
 
-          <a href="#" className={classes.link}>
+          <Link href={"/"} className={classes.link}>
             Home
-          </a>
+          </Link>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
@@ -165,15 +172,15 @@ export function HeaderMegaMenu() {
             </Center>
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
-          <a href="#" className={classes.link}>
+          <Link href={"/statistics"} className={classes.link}>
             Statistics
-          </a>
-          <a href="#" className={classes.link}>
+          </Link>
+          <Link href={"/news"} className={classes.link}>
             News & Updates
-          </a>
-          <a href="#" className={classes.link}>
+          </Link>
+          <Link href={"/contact"} className={classes.link}>
             Contact
-          </a>
+          </Link>
 
           <Divider my="sm" />
 
